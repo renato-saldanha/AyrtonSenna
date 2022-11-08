@@ -1,15 +1,13 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 
-export default function Card(props) {
+export default function Card({item}) {
   return (
     <View style={styles.container}>
-      <View style={styles.containerImagem}>
-        <Image source={props.imagem} />
-      </View>
+      <Image style={styles.imagem} source={item.imagem} />
       <View style={styles.containerTexto}>
-        <Text>{props.titulo}</Text>
-        <Text>{props.texto}</Text>
+        <Text style={styles.titulo}>{item.titulo}</Text>
+        <Text style={styles.texto}>{item.texto}</Text>
       </View>
     </View>
   );
@@ -18,12 +16,31 @@ export default function Card(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    margin: 8,
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    borderColor: '#e2e2e2',
   },
-  containerImagem: {
-    flex: 1,
+  imagem: {
+    width: '25%',
+    height: 90,
+    resizeMode: 'cover',
   },
   containerTexto: {
-    flex: 3,
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    margin: 5,
+    width: '73%',
+  },
+  titulo: {
+    marginTop: 5,
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  texto: {
+    fontSize: 11,
+    fontWeight: 'bold',
   },
 });
